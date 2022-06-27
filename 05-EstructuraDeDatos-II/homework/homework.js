@@ -12,10 +12,10 @@ Implementar la clase LinkedList, definiendo los siguientes métodos:
   */
  
  
- function LinkedList() {
-   this._length = 0;
-   this.head = null;
-  }
+function LinkedList() {
+ this.head = null;
+ this._length = 0;
+}
   
   function Node(value) {
     this.value = value;
@@ -36,7 +36,7 @@ Implementar la clase LinkedList, definiendo los siguientes métodos:
     current.next = node;
     this._length++;
     return node;
-}
+  }
 
 LinkedList.prototype.remove = function() {
   var current = this.head;
@@ -92,7 +92,22 @@ La clase debe tener los siguientes métodos:
 Ejemplo: supongamos que quiero guardar {instructora: 'Ani'} en la tabla. Primero puedo chequear, con hasKey, si ya hay algo en la tabla con el nombre 'instructora'; luego, invocando set('instructora', 'Ani'), se almacenará el par clave-valor en un bucket específico (determinado al hashear la clave)
 */
 
-function HashTable() {}
+function HashTable() {
+  var hashtable = [];
+  hashtable.length = 35;
+}
+HashTable.prototype.hash = function(){
+
+}
+HashTable.prototype.set = function() {
+
+}
+HashTable.prototype.get = function() {
+
+}
+HashTable.prototype.hasKey = function() {
+
+}
 
 // No modifiquen nada debajo de esta linea
 // --------------------------------

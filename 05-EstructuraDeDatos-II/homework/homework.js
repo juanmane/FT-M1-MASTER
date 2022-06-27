@@ -93,20 +93,34 @@ Ejemplo: supongamos que quiero guardar {instructora: 'Ani'} en la tabla. Primero
 */
 
 function HashTable() {
-  var hashtable = [];
-  hashtable.length = 35;
+  this.numBuckets = 35;
+  this.buckets = [];
 }
-HashTable.prototype.hash = function(){
 
+HashTable.prototype.hash = function(key){
+  var total = 0;
+  for (let i =0; i<key.length; i++) {
+    total = total + key.charCodeAt(i);
+  }
+  return total % this.numBuckets; //indice o posicion dentro de la tabal(arreglo)
 }
-HashTable.prototype.set = function() {
 
+HashTable.prototype.set = function(key,value) {
+  if(typeof key !== "string") throw new TypeError("Keys must be strings");
+  var indice = this.hash(key);
+  if(this.buckets[indice] == null) {
+    this.buckets[indice] = {};
+  }
+  this.buckets[indice][key] = value;
 }
-HashTable.prototype.get = function() {
 
+HashTable.prototype.get = function(key) {
+  var index = this.hash(key);
+  return this.buckets[index][key]
 }
-HashTable.prototype.hasKey = function() {
-
+HashTable.prototype.hasKey = function(key) {
+  var index = this.hash(key);
+  return this.buckets[index].hasOwnProperty(key)
 }
 
 // No modifiquen nada debajo de esta linea
